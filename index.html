@@ -1,85 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Cookery School Ontology</title>
-  <meta name="description" content="Cookery School ontology published as Linked Data">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 3rem;
-      max-width: 900px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #003366;
-    }
-    code {
-      background: #f4f4f4;
-      padding: 0.2em 0.4em;
-    }
-    a {
-      color: #0066cc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Cookery School Ontology – Linked Data</title>
+
+    <meta name="description" content="Cookery School Ontology published as Linked Data using GitHub Pages">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #500066, #00788a);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: centre;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        h2 {
+            color: #300066;
+            border-bottom: 3px solid #e6eef6;
+            padding-bottom: 0.3rem;
+            margin-top: 3rem;
+        }
+
+        p {
+            line-height: 1.7;
+            margin: 1rem 0;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+        }
+
+        a {
+            color: #0056aa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background: #f0f0f0;
+            padding: 0.3rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        pre {
+            background: #2b2b2b;
+            color: #eaeaea;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box {
+            background: #f2f7fc;
+            padding: 1.5rem;
+            border-left: 6px solid #6000aa;
+            margin: 2rem 0;
+        }
+
+        footer {
+            text-align: centre;
+            padding: 2rem;
+            background: #250066;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Cookery School Ontology</h1>
+    <header>
+        <h1>Cookery School Ontology - Emily Halley 20092335 - Assignment HCS </h1>
+    </header>
 
-<p>
-This site hosts the <strong>Cookery School Ontology</strong>, developed as part of the
-Human Centred Systems ontology assignment.
-</p>
+    <main>
 
-<p>
-The ontology models a cookery education domain including teachers, students, classes,
-recipes, techniques, tools, cuisine cultures, and skill levels.
-</p>
+        <h2>Module Human Centered Systems Ontology Assignment</h2>
+        <p> The <strong>Cookery School Ontology</strong> was developed as part of the
+            <em>Human‑Centred Systems ontology assignment</em> it represents a conceptual ontology for the development
+            of a cookery school.
+            <br>
+            This cookery school is run by master professionals who have specialised skills in culinary skills, culture,
+            education etc.
+            who are ready to teach cooking enthusiasts to enhance their cooking techniques. <br>
+            Within this ontology the cookery school is organised based on three core dimensions:
+        <ul>
+            <li>Human roles</li>
+            <li>Pedagogical structure</li>
+            <li>Culinary knowledge</li>
+        </ul>
+        <br>
+        By structuring the areas in relation to this discipline,
+        it makes it easy to represent the interactions between teachers, students, classes, recipes, techniques, tools,
+        levels of difficulty
+        and cuisine cultures. This model enables to create a solid design in representing the structure of the cookery
+        school.
+        For this ontology, it is hosted using Linked data hosted by GitPages using GitHub ontology<br>
+        It represents the main cookery school and query file was was created using Protégé, SPARQL and OWL files.
+        </p>
 
-<h2>Ontology Files (Linked Data)</h2>
+        <h2>About the Ontology</h2>
 
-<ul>
-  <li>
-    <a href="cookery-school.owl">cookery-school.owl</a>  
-    – OWL ontology for semantic modelling and reasoning
-  </li>
-</ul>
+        <p>
+            The <strong>Cookery School Ontology</strong> was developed as part of the
+            <em>Human‑Centred Systems ontology assignment</em>. <br>The ontology captures
+            the structure of a cookery school, including teachers, students, classes,
+            recipes, cooking techniques, tools, cuisine cultures, and difficulty levels.
+        </p>
 
-<h2>How to Reuse the Ontology</h2>
 
-<p>
-The ontology is published as Linked Data and can be reused by:
-</p>
+        <h2>Why Linked Data?</h2>
 
-<ul>
-  <li>Importing the OWL file into Protégé</li>
-  <li>Extending the model with additional recipes or cuisines</li>
-  <li>Querying the data using SPARQL</li>
-  <li>Using it as a teaching example for OWL and RDF</li>
-</ul>
+        <p>
+            Publishing the ontology as Linked Data ensures that it is:
+        </p>
 
-<h2>Access as Linked Data</h2>
+        <ul>
+            <li>Open and publicly accessible</li>
+            <li>Machine‑readable and interoperable</li>
+            <li>Reusable across systems and domains</li>
+            <li>Aligned with Semantic Web best practices</li>
+        </ul>
 
-<p>
-The ontology can be accessed directly via HTTP at:
-</p>
+        <h2>Linked Data Publication</h2>
 
-<p>
-<code>https://username.github.io/cookery-school-final/cookery-school.owl</code>
-</p>
+        <p>
+            This ontology is published as <strong>Linked Data</strong> using GitHub Pages.
+            The OWL file is publicly accessible via a stable HTTPS URL.<br>
+            It and can be downloaded, reused, and extended to the downloads folder.
+        </p>
 
-<p>
-Accessing this URL returns the OWL file, confirming correct publication as machine‑readable
-Linked Data.
-</p>
+        <div class="highlight-box">
+            <p><strong>Direct Linked Data URL: Main Ontology</strong></p>
+            <p><code>https://username.github.io/cookery-school-final/cookery-school-final.owl</code></p>
 
-<hr>
+            <p><strong>Direct Linked Data URL: Query Ontology</strong></p>
+            <p><code>https://username.github.io/cookery-school-final/queries.owl</code></p>
+        </div>
 
-<p>
-<em>Cookery School Ontology — Linked Data Publication</em>
-</p>
+        <h2>Ontology Files</h2>
+        <p>Click the Urls to Download the Public files</p>
+        <ul>
+            <li>
+                <a href="cookery-school-final.owl">cookery-school.owl</a>
+                — OWL ontology for semantic modelling, reasoning, and reuse
+            </li>
+            <li>
+                <a href="queries.owl">queries.owl</a>
+                — OWL ontology for testing out queries
+            </li>
+        </ul>
 
-</body>
+        <h2>How to Reuse the Ontology</h2>
+
+        <p>
+            The ontology can be reused in a variety of contexts:
+        </p>
+
+        <ul>
+            <li>Imported into <strong>Protégé</strong> for inspection and extension</li>
+            <li>Queried using <strong>SPARQL</strong></li>
+            <li>Extended with new cuisines, recipes, or classes</li>
+            <li>Used as an educational example of OWL and Linked Data</li>
+        </ul>
+
+        <h2>Queries to use from queries.owl</h2>
+
+        <p>
+            The ontology can be queried to retrieve information such as:
+        </p>
+
+        <h3> Listing out the individuals</h3>
+        <p>This is a test all of the owl files are correctly listed.</p>
+        <pre>
+        SELECT ?individual
+        WHERE {
+        ?individual a owl:NamedIndividual .
+        }
+  </pre>
+
+        <h3>What recipes are included in a class</h3>
+        <p>Listing out the recipes associated for each class.</p>
+        <pre>
+            SELECT ?class ?recipe
+            WHERE {
+    ?class :includesRecipe ?recipe .
+        }
+  </pre>
+
+        <h3>Which techniques are required to prepare a recipe</h3>
+        <p>Listing out the recipes with techniques needed for it to be cooked.</p>
+        <pre>
+        SELECT ?teacher ?class ?recipe
+        WHERE {
+        ?teacher rdf:type :Teacher ;
+           :teaches ?class .
+            ?class :includesRecipe ?recipe .
+        }
+      ORDER BY ?teacher ?class
+
+  </pre>
+
+        <h3>What each teacher teaches </h3>
+        <p>This query show what type of recipes the teacher is teaching for each class..</p>
+        <pre>
+        SELECT ?student
+        WHERE {
+    ?student rdf:type :Student ;
+           :attends :class_BeginnerCooking .
+        }
+
+
+  </pre>
+
+
+        <h3>Which techniques are required to prepare a recipe</h3>
+        <p>Listing out the recipes with techniques needed for it to be cooked.</p>
+
+        <pre>
+        SELECT ?recipe ?technique
+      WHERE {
+        ?recipe :usesTechnique ?technique .
+        }
+
+
+  </pre>
+
+    </main>
+
+
+    <footer>
+        Cookery School Ontology • Linked Data Publication • GitHub Pages • Emily Halley 20092335
+    </footer>
+
+  </body>
 </html>

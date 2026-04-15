@@ -1,0 +1,339 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://example.org/cookery#"
+    xml:base="http://example.org/cookery"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <!-- =======================
+         CLASSES
+    ======================== -->
+
+    <owl:Class rdf:about="#Person"/>
+    <owl:Class rdf:about="#Teacher">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+        <owl:disjointWith rdf:resource="#Student"/>
+    </owl:Class>
+    <owl:Class rdf:about="#Student">
+        <rdfs:subClassOf rdf:resource="#Person"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="#Class"/>
+    <owl:Class rdf:about="#Recipe"/>
+    <owl:Class rdf:about="#Technique"/>
+    <owl:Class rdf:about="#Tool"/>
+    <owl:Class rdf:about="#CuisineCulture"/>
+    <owl:Class rdf:about="#Level"/>
+
+    <!-- =======================
+         CARDINALITY RESTRICTION
+    ======================== -->
+
+    <owl:Class rdf:about="#Recipe">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#usesTechnique"/>
+                <owl:minCardinality rdf:datatype="xsd:nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <!-- =======================
+         OBJECT PROPERTIES
+    ======================== -->
+
+    <owl:ObjectProperty rdf:about="#teaches">
+        <rdfs:domain rdf:resource="#Teacher"/>
+        <rdfs:range rdf:resource="#Class"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#attends">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="#Class"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#includesRecipe">
+        <rdfs:domain rdf:resource="#Class"/>
+        <rdfs:range rdf:resource="#Recipe"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#usesTechnique">
+        <rdfs:domain rdf:resource="#Recipe"/>
+        <rdfs:range rdf:resource="#Technique"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#requiresTool">
+        <rdfs:domain rdf:resource="#Technique"/>
+        <rdfs:range rdf:resource="#Tool"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#belongsToCulture">
+        <rdfs:domain rdf:resource="#Recipe"/>
+        <rdfs:range rdf:resource="#CuisineCulture"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#containsTool">
+        <rdfs:domain rdf:resource="#CuisineCulture"/>
+        <rdfs:range rdf:resource="#Tool"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="#hasLevel">
+        <rdfs:domain rdf:resource="#Recipe"/>
+        <rdfs:range rdf:resource="#Level"/>
+    </owl:ObjectProperty>
+
+    <!-- =======================
+         DATA PROPERTIES
+    ======================== -->
+
+    <owl:DatatypeProperty rdf:about="#personName">
+        <rdfs:domain rdf:resource="#Person"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#currentSkillLevel">
+        <rdfs:domain rdf:resource="#Student"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#recipeName">
+        <rdfs:domain rdf:resource="#Recipe"/>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="#cookingTime">
+        <rdfs:domain rdf:resource="#Recipe"/>
+        <rdfs:range rdf:resource="xsd:integer"/>
+    </owl:DatatypeProperty>
+
+    <!-- =======================
+         INDIVIDUALS 
+    ======================== -->
+
+    <!-- LEVELS -->
+    <owl:NamedIndividual rdf:about="#Beginner"><rdf:type rdf:resource="#Level"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Intermediate"><rdf:type rdf:resource="#Level"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Advanced"><rdf:type rdf:resource="#Level"/></owl:NamedIndividual>
+
+    <!-- CUISINES -->
+    <owl:NamedIndividual rdf:about="#Italian">
+        <rdf:type rdf:resource="#CuisineCulture"/>
+        <containsTool rdf:resource="#tool_Pot"/>
+        <containsTool rdf:resource="#tool_Whisk"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#French">
+        <rdf:type rdf:resource="#CuisineCulture"/>
+        <containsTool rdf:resource="#tool_Oven"/>
+        <containsTool rdf:resource="#tool_Whisk"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Modern">
+        <rdf:type rdf:resource="#CuisineCulture"/>
+        <containsTool rdf:resource="#tool_Pan"/>
+        <containsTool rdf:resource="#tool_Mixer"/>
+    </owl:NamedIndividual>
+
+    <!-- TOOLS -->
+    <owl:NamedIndividual rdf:about="#tool_Whisk"><rdf:type rdf:resource="#Tool"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#tool_Pot"><rdf:type rdf:resource="#Tool"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#tool_Oven"><rdf:type rdf:resource="#Tool"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#tool_Pan"><rdf:type rdf:resource="#Tool"/></owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#tool_Mixer"><rdf:type rdf:resource="#Tool"/></owl:NamedIndividual>
+
+    <!-- TECHNIQUES -->
+    <owl:NamedIndividual rdf:about="#technique_Mixing">
+        <rdf:type rdf:resource="#Technique"/>
+        <requiresTool rdf:resource="#tool_Whisk"/>
+        <requiresTool rdf:resource="#tool_Mixer"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#technique_Boiling">
+        <rdf:type rdf:resource="#Technique"/>
+        <requiresTool rdf:resource="#tool_Pot"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#technique_Baking">
+        <rdf:type rdf:resource="#Technique"/>
+        <requiresTool rdf:resource="#tool_Oven"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#technique_Simmering">
+        <rdf:type rdf:resource="#Technique"/>
+        <requiresTool rdf:resource="#tool_Pan"/>
+    </owl:NamedIndividual>
+
+    <!-- RECIPES -->
+
+    <owl:NamedIndividual rdf:about="#recipe_Carbonara">
+        <rdf:type rdf:resource="#Recipe"/>
+        <recipeName>Spaghetti Carbonara</recipeName>
+        <cookingTime rdf:datatype="xsd:integer">30</cookingTime>
+        <usesTechnique rdf:resource="#technique_Boiling"/>
+        <belongsToCulture rdf:resource="#Italian"/>
+        <hasLevel rdf:resource="#Beginner"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#recipe_ChocolateSouffle">
+        <rdf:type rdf:resource="#Recipe"/>
+        <recipeName>Chocolate Soufflé</recipeName>
+        <cookingTime rdf:datatype="xsd:integer">50</cookingTime>
+        <usesTechnique rdf:resource="#technique_Baking"/>
+        <belongsToCulture rdf:resource="#French"/>
+        <hasLevel rdf:resource="#Advanced"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#recipe_VeganRisotto">
+        <rdf:type rdf:resource="#Recipe"/>
+        <recipeName>Vegan Mushroom Risotto</recipeName>
+        <cookingTime rdf:datatype="xsd:integer">40</cookingTime>
+        <usesTechnique rdf:resource="#technique_Simmering"/>
+        <belongsToCulture rdf:resource="#Modern"/>
+        <hasLevel rdf:resource="#Intermediate"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#recipe_ScrambledEggs">
+        <rdf:type rdf:resource="#Recipe"/>
+        <recipeName>Scrambled Eggs</recipeName>
+        <cookingTime rdf:datatype="xsd:integer">10</cookingTime>
+        <usesTechnique rdf:resource="#technique_Mixing"/>
+        <belongsToCulture rdf:resource="#Modern"/>
+        <hasLevel rdf:resource="#Beginner"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#recipe_BeefWellington">
+        <rdf:type rdf:resource="#Recipe"/>
+        <recipeName>Beef Wellington</recipeName>
+        <cookingTime rdf:datatype="xsd:integer">90</cookingTime>
+        <usesTechnique rdf:resource="#technique_Baking"/>
+        <belongsToCulture rdf:resource="#French"/>
+        <hasLevel rdf:resource="#Advanced"/>
+    </owl:NamedIndividual>
+
+    <!-- CLASSES -->
+    <owl:NamedIndividual rdf:about="#class_BakingBasics">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_Tiramisu"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#class_ItalianPasta">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_Carbonara"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#class_FrenchDesserts">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_ChocolateSouffle"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#class_ModernCuisine">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_VeganRisotto"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#class_BeginnerCooking">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_ScrambledEggs"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#class_AdvancedTechniques">
+        <rdf:type rdf:resource="#Class"/>
+        <includesRecipe rdf:resource="#recipe_BeefWellington"/>
+    </owl:NamedIndividual>
+
+    <!-- TEACHERS -->
+    <owl:NamedIndividual rdf:about="#teacher_Mary">
+        <rdf:type rdf:resource="#Teacher"/>
+        <personName>Mary</personName>
+        <teaches rdf:resource="#class_BakingBasics"/>
+        <teaches rdf:resource="#class_BeginnerCooking"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#teacher_Luca">
+        <rdf:type rdf:resource="#Teacher"/>
+        <personName>Luca</personName>
+        <teaches rdf:resource="#class_ItalianPasta"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#teacher_Sophie">
+        <rdf:type rdf:resource="#Teacher"/>
+        <personName>Sophie</personName>
+        <teaches rdf:resource="#class_FrenchDesserts"/>
+        <teaches rdf:resource="#class_AdvancedTechniques"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#teacher_Alan">
+        <rdf:type rdf:resource="#Teacher"/>
+        <personName>Alan</personName>
+        <teaches rdf:resource="#class_ModernCuisine"/>
+    </owl:NamedIndividual>
+
+    <!-- STUDENTS -->
+    <owl:NamedIndividual rdf:about="#student_Emma">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Emma</personName>
+        <attends rdf:resource="#class_BakingBasics"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_James">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>James</personName>
+        <attends rdf:resource="#class_ItalianPasta"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Sarah">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Sarah</personName>
+        <attends rdf:resource="#class_FrenchDesserts"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Tom">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Tom</personName>
+        <attends rdf:resource="#class_ModernCuisine"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Laura">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Laura</personName>
+        <attends rdf:resource="#class_BeginnerCooking"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Noah">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Noah</personName>
+        <attends rdf:resource="#class_BeginnerCooking"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Emily">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Emily</personName>
+        <attends rdf:resource="#class_AdvancedTechniques"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Oscar">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Oscar</personName>
+        <attends rdf:resource="#class_AdvancedTechniques"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Anna">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Anna</personName>
+        <attends rdf:resource="#class_ItalianPasta"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#student_Mark">
+        <rdf:type rdf:resource="#Student"/>
+        <personName>Mark</personName>
+        <attends rdf:resource="#class_FrenchDesserts"/>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
+
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
